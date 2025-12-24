@@ -53,19 +53,19 @@
 
 ### 学生和专业
 
-![er-s-m](er-s-m.png)
+![er-s-m](images/er-s-m.png)
 
 ### 学生和图书
 
-![er-s-b](er-s-b.png)
+![er-s-b](images/er-s-b.png)
 
 ### 专业和学院
 
-![er-m-c](er-m-c.png)
+![er-m-c](images/er-m-c.png)
 
 ### 管理员和学院
 
-![er-a-c](er-a-c.png)
+![er-a-c](images/er-a-c.png)
 
 
 ## 前端UI设计
