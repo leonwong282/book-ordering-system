@@ -1,7 +1,8 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow
-from LonginUI import Ui_LoginWindow
+
 from AMainWindow import Ui_AMainWindow
+from LonginUI import Ui_LoginWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow
 from SMainWindow import Ui_SMainWindow
 
 if __name__ == '__main__':

@@ -1,13 +1,14 @@
-from PyQt5.QtWidgets import QMainWindow, QHeaderView
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from frontend.SMainWindow import Ui_SMainWindow
+from PyQt5.QtGui import QStandardItem, QStandardItemModel
+from PyQt5.QtWidgets import QHeaderView, QMainWindow
+
 from backend.db_utils import (
-    get_textbooks,
-    get_student_orders,
-    update_student_password,
-    place_order,
     delete_order,
+    get_student_orders,
+    get_textbooks,
+    place_order,
+    update_student_password,
 )
+from frontend.SMainWindow import Ui_SMainWindow
 
 
 class SMainWindow(QMainWindow):

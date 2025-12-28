@@ -1,8 +1,9 @@
 from PyQt5.QtWidgets import QMainWindow
-from frontend.LonginUI import Ui_LoginWindow
+
 from backend.a_main_window import AMainWindow
-from backend.s_main_window import SMainWindow
 from backend.db_utils import get_admin_credentials, get_student_credentials
+from backend.s_main_window import SMainWindow
+from frontend.LonginUI import Ui_LoginWindow
 
 
 class LoginWindow(QMainWindow):
