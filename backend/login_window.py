@@ -9,15 +9,20 @@ class LoginWindow(QMainWindow):
     """
     login
     """
+
     def __init__(self):
         super().__init__()
         self.window = None
         self.ui = Ui_LoginWindow()
         self.ui.setupUi(self)
         # Show student login UI in Login Window
-        self.ui.pushButton_A_login.clicked.connect(lambda: self.ui.stackedWidget_2.setCurrentIndex(1))
+        self.ui.pushButton_A_login.clicked.connect(
+            lambda: self.ui.stackedWidget_2.setCurrentIndex(1)
+        )
         # Show admin  login UI in Login Window
-        self.ui.pushButton_S_login.clicked.connect(lambda: self.ui.stackedWidget_2.setCurrentIndex(0))
+        self.ui.pushButton_S_login.clicked.connect(
+            lambda: self.ui.stackedWidget_2.setCurrentIndex(0)
+        )
         # If account and password is ture, opening Student Main Window
         self.ui.pushButton_A_sure.clicked.connect(self.login_in_a_window)
         # If account and password is ture, opening Admin Main Window
@@ -26,7 +31,6 @@ class LoginWindow(QMainWindow):
 
     def login_in_a_window(self):
         """
-
         :return:
         """
         account = self.ui.lineEdit_A_account.text()
@@ -36,8 +40,8 @@ class LoginWindow(QMainWindow):
             if len(account) == 0 or len(password) == 0:
                 self.ui.stackedWidget.setCurrentIndex(1)
             elif account == account_list[i] and password == password_list[i]:
-                self.window = AMainWindow(account)    # TO DO Show Admin Main Window
-                self.closse()   # close Login window
+                self.window = AMainWindow(account)
+                self.close()  # close Login window
             else:
                 self.ui.stackedWidget.setCurrentIndex(2)
 

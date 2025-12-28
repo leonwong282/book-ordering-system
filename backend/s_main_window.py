@@ -1,7 +1,14 @@
-from PyQt5.QtWidgets import QMainWindow , QHeaderView
+from PyQt5.QtWidgets import QMainWindow, QHeaderView
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from frontend.SMainWindow import Ui_SMainWindow
-from backend.db_utils import get_textbooks, get_student_orders, update_student_password, place_order, delete_order
+from backend.db_utils import (
+    get_textbooks,
+    get_student_orders,
+    update_student_password,
+    place_order,
+    delete_order,
+)
+
 
 class SMainWindow(QMainWindow):
     def __init__(self, user_now):
@@ -11,12 +18,20 @@ class SMainWindow(QMainWindow):
         self.ui = Ui_SMainWindow()
         self.ui.setupUi(self)
         self.ui.pushButton_login_out.clicked.connect(self.login_out)
-        self.ui.pushButton_S_shopping.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(0))
-        self.ui.pushButton_S_order.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(1))
-        self.ui.pushButton_S_update_pw.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(2))
+        self.ui.pushButton_S_shopping.clicked.connect(
+            lambda: self.ui.stackedWidget.setCurrentIndex(0)
+        )
+        self.ui.pushButton_S_order.clicked.connect(
+            lambda: self.ui.stackedWidget.setCurrentIndex(1)
+        )
+        self.ui.pushButton_S_update_pw.clicked.connect(
+            lambda: self.ui.stackedWidget.setCurrentIndex(2)
+        )
         self.ui.pushButton_S_M_sure.clicked.connect(self.change_password)
         self.ui.pushButton_S_M_order_sure.clicked.connect(self.order_book)
-        self.ui.pushButton_S_M_order_sure_update.clicked.connect(self.delete_order_student)
+        self.ui.pushButton_S_M_order_sure_update.clicked.connect(
+            self.delete_order_student
+        )
         self.setup_book_list()
         self.setup_order_list()
         self.show()
@@ -27,14 +42,16 @@ class SMainWindow(QMainWindow):
         :return:
         """
         self.model = QStandardItemModel(5, 4)
-        self.model.setHorizontalHeaderLabels(['书号', '书名', '价格', '作者', '出版社'])
+        self.model.setHorizontalHeaderLabels(["书号", "书名", "价格", "作者", "出版社"])
         data = get_textbooks()
         for row in range(len(data)):
             for col in range(len(data[row])):
                 item = QStandardItem(str(data[row][col]))
                 self.model.setItem(row, col, item)
         self.ui.tableView_S_M_bookList.setModel(self.model)
-        self.ui.tableView_S_M_bookList.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.ui.tableView_S_M_bookList.horizontalHeader().setSectionResizeMode(
+            QHeaderView.Stretch
+        )
         self.ui.tableView_S_M_bookList.verticalHeader().setVisible(False)
 
     def setup_order_list(self):
@@ -43,7 +60,7 @@ class SMainWindow(QMainWindow):
         :return:
         """
         self.model2 = QStandardItemModel(4, 4)
-        self.model2.setHorizontalHeaderLabels(['订单号', '姓名', '书名', '价格'])
+        self.model2.setHorizontalHeaderLabels(["订单号", "姓名", "书名", "价格"])
         data = get_student_orders(self.user_now)
         for row in range(len(data)):
             for col in range(len(data[row])):
@@ -59,13 +76,18 @@ class SMainWindow(QMainWindow):
         :return:
         """
         from backend.login_window import LoginWindow
+
         self.close()
-        self.login = LoginWindow(self.user_now)
+        self.login = LoginWindow()
 
     def change_password(self):
         password_old = self.ui.lineEdit_S_M_password.text()
         password_new = self.ui.lineEdit_S_M_new_password.text()
-        if len(password_old) == 0 or len(password_new) == 0 or len(self.ui.lineEdit_S_M_new_password_sure.text()) == 0:
+        if (
+            len(password_old) == 0
+            or len(password_new) == 0
+            or len(self.ui.lineEdit_S_M_new_password_sure.text()) == 0
+        ):
             self.ui.stackedWidget_2.setCurrentIndex(1)
         elif self.ui.lineEdit_S_M_new_password_sure.text() == password_new:
             self.ui.stackedWidget_2.setCurrentIndex(3)
