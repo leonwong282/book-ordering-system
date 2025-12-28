@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QHeaderView, QMessageBox
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from frontend.AMainWindow import Ui_AMainWindow
-from db_utils import get_college_orders, get_major_orders, get_book_orders, update_admin_password, backup_database, \
+from backend.db_utils import get_college_orders, get_major_orders, get_book_orders, update_admin_password, backup_database, \
     recover_database, get_book_orders_out
 
 class AMainWindow(QMainWindow):

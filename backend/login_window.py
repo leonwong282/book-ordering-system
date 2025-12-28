@@ -53,7 +53,7 @@ class LoginWindow(QMainWindow):
             if len(account) == 0 or len(password) == 0:
                 self.ui.stackedWidget.setCurrentIndex(1)
             elif account == account_list[i] and password == password_list[i]:
-                self.window = SMainWindow()
+                self.window = SMainWindow(account)
                 self.close()
             else:
                 self.ui.stackedWidget.setCurrentIndex(2)
