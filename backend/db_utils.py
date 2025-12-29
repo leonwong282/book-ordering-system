@@ -156,11 +156,11 @@ def backup_database(backup_path):
     password = "root"
     database = "TextbookOrder"
     backup_filename = os.path.join(backup_path, f"{database}.sql")
-    os.system(f"mysqldump -u{user} -p{password} {database} > {backup_filename}")
+    os.system(f"mysqldump --skip-ssl -u{user} -p{password} {database} > {backup_filename}")
 
 
 def recover_database(sql_file_path):
     user = "root"
     password = "root"
     database = "TextbookOrder"
-    os.system(f"mysql -u{user} -p{password} {database} < {sql_file_path}")
+    os.system(f"mysql --skip-ssl -u{user} -p{password} {database} < {sql_file_path}")

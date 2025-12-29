@@ -94,26 +94,36 @@ class AMainWindow(QMainWindow):
         self.ui.lineEdit_A_M_college.clear()
 
     def order_major(self):
-        self.model_a_m = QStandardItemModel(2, 2)
-        self.model_a_m.setHorizontalHeaderLabels(["书号", "订购数量"])
-        majorid = self.ui.lineEdit_A_M_major.text()
-        data = get_major_orders(majorid)
-        for row in range(len(data)):
-            for col in range(len(data[row])):
-                item = QStandardItem(str(data[row][col]))
-                self.model_a_m.setItem(row, col, item)
-        self.ui.tableView_A_M_major.setModel(self.model_a_m)
-        self.ui.tableView_A_M_major.horizontalHeader().setSectionResizeMode(
-            QHeaderView.Stretch
-        )
-        self.ui.tableView_A_M_major.verticalHeader().setVisible(False)
-        self.ui.lineEdit_A_M_major.clear()
+        try:
+            self.model_a_m = QStandardItemModel(2, 2)
+            self.model_a_m.setHorizontalHeaderLabels(["书号", "订购数量"])
+            majorid = self.ui.lineEdit_A_M_major.text()
+            data = get_major_orders(majorid)
+            for row in range(len(data)):
+                for col in range(len(data[row])):
+                    item = QStandardItem(str(data[row][col]))
+                    self.model_a_m.setItem(row, col, item)
+            self.ui.tableView_A_M_major.setModel(self.model_a_m)
+            self.ui.tableView_A_M_major.horizontalHeader().setSectionResizeMode(
+                QHeaderView.Stretch
+            )
+            self.ui.tableView_A_M_major.verticalHeader().setVisible(False)
+            self.ui.lineEdit_A_M_major.clear()
+        except Exception as e:
+            success_msg = QtWidgets.QMessageBox()
+            success_msg.setText("请确认输入！")
+            success_msg.exec()
 
     def order_book_out(self):
-        get_book_orders_out()
-        success_msg = QtWidgets.QMessageBox()
-        success_msg.setText("导出成功！")
-        success_msg.exec()
+        try:
+            get_book_orders_out()
+            success_msg = QtWidgets.QMessageBox()
+            success_msg.setText("导出成功！")
+            success_msg.exec()
+        except Exception as e:
+            success_msg = QtWidgets.QMessageBox()
+            success_msg.setText("导出失败！")
+            success_msg.exec()
 
     def backup_data(self):
         backup_path = "/Users/liang/Downloads"

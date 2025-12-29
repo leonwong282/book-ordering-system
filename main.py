@@ -1,6 +1,6 @@
 import sys
 
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication
 
 from backend.login_window import LoginWindow
 
