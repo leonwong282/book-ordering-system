@@ -109,8 +109,41 @@ claude-extract
 ```bash
 claude
 
-claude 
+/init
 ```
+
+### Claude Code Conversations Export
+
+```bash
+pip install claude-conversation-extractor
+```
+
+```bash
+claude-extract
+```
+
+![img.png](images/img.png)
+
+### API 计费
+
+依据 Claude Code 日志，编写测试代码总花费 $2.69。
+
+[Claude Conversations/claude-conversation-2025-12-29-7dcc74f4.md]
+
+$2.69 (costs may be inaccurate due to usage of unknown models)
+
+### AI 辅助编程体验总结
+
+- 2022-2023：GitHub Copilot 面向 `Tab` 编程
+- 2024：Cursor 可以跨越单文件，进行多文件编辑
+- 2025：Claude Code 从 IDE 移动到终端，可以使用命令操作多款工具链，实现半自动化的辅助编程
+
+但是，即便当前最优化的 Claude Code，仍然是半自动化的辅助角色，代码质量纯靠“运气”。
+而“大运势”之人，是能够清晰明白各个架构、程式码的优劣势，设计好项目架构和基本程式码，
+把 Claude Code 当成“小助理”，并有随时需要自己“下场”编写代码的准备。
+
+在本次测试代码的编写过程中，既令人惊讶，无需人工编写繁杂的测试代码，又感叹“AI的小聪明”，
+在它发现报错，无法实现时，就修改需求，让报错消失，而不是解决问题。
 
 # Tasks
 
@@ -125,6 +158,6 @@ claude
 - [x] 完成高级 导出、备份和恢复功能
 - [x] Ruff & pyrefly 替换 Black & pylint
 - [x] pytest 单元测试
-- [ ] 测试用户体验
-- [ ] 调整与优化应用
+- [x] 测试用户体验
+- [x] 调整与优化应用
 - [ ] PyInstaller 打包
