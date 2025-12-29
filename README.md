@@ -41,7 +41,7 @@
     - pymysql
     - pandas
     - pytest 单元测试
-    - Black & pylint：格式化和静态代码分析
+    - Ruff & pyrefly：格式化和静态代码分析
 
 # 系统设计
 
@@ -80,7 +80,37 @@
 
 ## 后端逻辑设计
 
+- 每个界面的行为，单独封装
+- 数据库工具函数，单独封装
+
+## Tools
+
+### Claude Conversation Extractor Tool
+
+```bash
+pip install claude-conversation-extractor
+```
+
+```bash
+# Interactive mode with UI (easiest)
+claude-start
+
+# CLI mode
+claude-extract
+
+```
+
 ## 自动测试框架
+
+- 使用 pytest 测试框架
+- 同时引入 Claude Code 进行测试代码辅助生成
+- Claude Code 配置大陆的 minmax 2 模型 API
+
+```bash
+claude
+
+claude 
+```
 
 # Tasks
 
@@ -94,7 +124,7 @@
 - [x] 完成前后端交互
 - [x] 完成高级 导出、备份和恢复功能
 - [x] Ruff & pyrefly 替换 Black & pylint
-- [ ] pytest单元测试
+- [x] pytest 单元测试
 - [ ] 测试用户体验
 - [ ] 调整与优化应用
 - [ ] PyInstaller 打包
